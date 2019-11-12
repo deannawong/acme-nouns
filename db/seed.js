@@ -11,9 +11,9 @@ const seed = () => {
     { name: "mark" }
   ];
   const thingsToBe = [
-    { name: "corgi", price: 9999 },
-    { name: "seltzer", price: 10 },
-    { name: "frisbee", price: 5 }
+    { name: "corgi", cost: 9999 },
+    { name: "seltzer", cost: 10 },
+    { name: "frisbee", cost: 5 }
   ];
 
   return Promise.all(placesToBe.map(place => Places.create(place))).then(
@@ -25,7 +25,17 @@ const seed = () => {
             placeId: places[0].id
           });
         })
-      );
+      ).then(people => {
+        return Promise.all(
+          thingsToBe.map(thing => {
+            return Things.create({
+              name: thing.name,
+              cost: 10,
+              personId: people[2].id
+            });
+          })
+        );
+      });
     }
   );
 };

@@ -9,10 +9,7 @@ const Things = db.define("things", {
     notEmpty: true
   },
   cost: {
-    type: INTEGER,
-    unique: false,
-    allowNull: false,
-    notEmpty: true
+    type: INTEGER
   }
 });
 

@@ -9,6 +9,7 @@ Places.hasMany(People);
 
 Things.belongsTo(People);
 People.hasMany(Things);
+
 module.exports = {
   db,
   seed,

@@ -37,7 +37,7 @@ app.get("/api/places", (req, res, next) => {
 });
 
 app.get("/api/people", (req, res, next) => {
-  People.findAll()
+  People.findAll({ include: [Things] })
     .then(people => {
       res.send(people);
     })
